@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  ViewController.h
 //  Deezer
 //
 //  Created by Vladimir Deriglazov on 17.06.17.
@@ -7,11 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+@class DZUser;
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
-
-
+@interface ViewController : UIViewController
+@property (nonatomic, strong) DZUser *user;
 @end
 

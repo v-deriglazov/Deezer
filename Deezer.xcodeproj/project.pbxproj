@@ -13,6 +13,9 @@
 		E70666F01EF5285000855D2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E70666EE1EF5285000855D2E /* Main.storyboard */; };
 		E70666F21EF5285000855D2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E70666F11EF5285000855D2E /* Assets.xcassets */; };
 		E70666F51EF5285000855D2E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E70666F31EF5285000855D2E /* LaunchScreen.storyboard */; };
+		E70666FF1EF57AC000855D2E /* DZUser.m in Sources */ = {isa = PBXBuildFile; fileRef = E70666FE1EF57AC000855D2E /* DZUser.m */; };
+		E70667021EF57E6D00855D2E /* DZPlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = E70667011EF57E6D00855D2E /* DZPlaylist.m */; };
+		E70667051EF5814600855D2E /* DZRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E70667041EF5814600855D2E /* DZRequestManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,12 @@
 		E70666F11EF5285000855D2E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E70666F41EF5285000855D2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E70666F61EF5285000855D2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E70666FD1EF57AC000855D2E /* DZUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZUser.h; sourceTree = "<group>"; };
+		E70666FE1EF57AC000855D2E /* DZUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZUser.m; sourceTree = "<group>"; };
+		E70667001EF57E6D00855D2E /* DZPlaylist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZPlaylist.h; sourceTree = "<group>"; };
+		E70667011EF57E6D00855D2E /* DZPlaylist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZPlaylist.m; sourceTree = "<group>"; };
+		E70667031EF5814600855D2E /* DZRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZRequestManager.h; sourceTree = "<group>"; };
+		E70667041EF5814600855D2E /* DZRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZRequestManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +67,7 @@
 		E70666E41EF5285000855D2E /* Deezer */ = {
 			isa = PBXGroup;
 			children = (
+				E70666FC1EF57A4B00855D2E /* Model */,
 				E70666E81EF5285000855D2E /* AppDelegate.h */,
 				E70666E91EF5285000855D2E /* AppDelegate.m */,
 				E70666EB1EF5285000855D2E /* ViewController.h */,
@@ -77,6 +87,19 @@
 				E70666E61EF5285000855D2E /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E70666FC1EF57A4B00855D2E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E70666FD1EF57AC000855D2E /* DZUser.h */,
+				E70666FE1EF57AC000855D2E /* DZUser.m */,
+				E70667001EF57E6D00855D2E /* DZPlaylist.h */,
+				E70667011EF57E6D00855D2E /* DZPlaylist.m */,
+				E70667031EF5814600855D2E /* DZRequestManager.h */,
+				E70667041EF5814600855D2E /* DZRequestManager.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,6 +173,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E70666FF1EF57AC000855D2E /* DZUser.m in Sources */,
+				E70667051EF5814600855D2E /* DZRequestManager.m in Sources */,
+				E70667021EF57E6D00855D2E /* DZPlaylist.m in Sources */,
 				E70666ED1EF5285000855D2E /* ViewController.m in Sources */,
 				E70666EA1EF5285000855D2E /* AppDelegate.m in Sources */,
 				E70666E71EF5285000855D2E /* main.m in Sources */,
@@ -309,6 +335,7 @@
 				E70666FB1EF5285000855D2E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
