@@ -11,8 +11,12 @@
 #import "DZUser.h"
 #import "DZPlaylist.h"
 
+#import "DZProfileTableViewCell.h"
+#import "DZPlaylistTableViewCell.h"
 
-static NSString *const kCellID = @"cellID";
+
+static NSString *const kProfileCellID = @"profileCell";
+static NSString *const kPlaylistCellID = @"playlistCell";
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
@@ -23,8 +27,8 @@ static NSString *const kCellID = @"cellID";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kCellID];
     self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 44.0;
     
     UIRefreshControl *control = [UIRefreshControl new];
     [control addTarget:self action:@selector(refreshData) forControlEvents:UIControlEventValueChanged];
@@ -60,6 +64,7 @@ static NSString *const kCellID = @"cellID";
 
 - (void)userWillRefresh:(NSNotification *)notification
 {
+    NSParameterAssert(self.user == notification.object);
     [self.tableView.refreshControl beginRefreshing];
     [self.tableView setContentOffset:CGPointMake(0, -CGRectGetHeight(self.tableView.refreshControl.bounds)) animated:YES];
 }
@@ -67,8 +72,19 @@ static NSString *const kCellID = @"cellID";
 - (void)userDidRefresh:(NSNotification *)notification
 {
     NSParameterAssert(self.user == notification.object);
-    [self.tableView reloadData];
     [self.tableView.refreshControl endRefreshing];
+    [self.tableView reloadData];
+    
+    NSError *err = self.user.refreshError;
+    if (err != nil)
+    {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Error", nil) message:err.description preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self dismissViewControllerAnimated:YES completion:NULL];
+        }];
+        [alert addAction:action];
+        [self presentViewController:alert animated:YES completion:NULL];
+    }
 }
 
 #pragma mark - UITableViewDelegate, UITableViewDataSource
@@ -90,23 +106,23 @@ static NSString *const kCellID = @"cellID";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellID];
+    UITableViewCell *result = nil;
     NSString *text = nil;
     if (indexPath.section == 0)
     {
+        DZProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kProfileCellID];
         text = [self.user debugDescription];
+        cell.text = text;
+        result = cell;
     }
     else
     {
+        DZPlaylistTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kPlaylistCellID];
         text = [[[self.user.playlists allObjects] objectAtIndex:indexPath.row] debugDescription];
+        cell.text = text;
+        result = cell;
     }
-    cell.textLabel.text = text;
-    return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [self refreshData];
+    return result;
 }
 
 @end

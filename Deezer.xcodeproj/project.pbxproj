@@ -16,6 +16,8 @@
 		E70666FF1EF57AC000855D2E /* DZUser.m in Sources */ = {isa = PBXBuildFile; fileRef = E70666FE1EF57AC000855D2E /* DZUser.m */; };
 		E70667021EF57E6D00855D2E /* DZPlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = E70667011EF57E6D00855D2E /* DZPlaylist.m */; };
 		E70667051EF5814600855D2E /* DZRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E70667041EF5814600855D2E /* DZRequestManager.m */; };
+		E706670B1EF5D22600855D2E /* DZProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E706670A1EF5D22600855D2E /* DZProfileTableViewCell.m */; };
+		E706670E1EF5D23A00855D2E /* DZPlaylistTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E706670D1EF5D23A00855D2E /* DZPlaylistTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +37,10 @@
 		E70667011EF57E6D00855D2E /* DZPlaylist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZPlaylist.m; sourceTree = "<group>"; };
 		E70667031EF5814600855D2E /* DZRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZRequestManager.h; sourceTree = "<group>"; };
 		E70667041EF5814600855D2E /* DZRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZRequestManager.m; sourceTree = "<group>"; };
+		E70667091EF5D22600855D2E /* DZProfileTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZProfileTableViewCell.h; sourceTree = "<group>"; };
+		E706670A1EF5D22600855D2E /* DZProfileTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZProfileTableViewCell.m; sourceTree = "<group>"; };
+		E706670C1EF5D23A00855D2E /* DZPlaylistTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZPlaylistTableViewCell.h; sourceTree = "<group>"; };
+		E706670D1EF5D23A00855D2E /* DZPlaylistTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZPlaylistTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +73,7 @@
 		E70666E41EF5285000855D2E /* Deezer */ = {
 			isa = PBXGroup;
 			children = (
+				E70667081EF5D1E700855D2E /* Views */,
 				E70666FC1EF57A4B00855D2E /* Model */,
 				E70666E81EF5285000855D2E /* AppDelegate.h */,
 				E70666E91EF5285000855D2E /* AppDelegate.m */,
@@ -100,6 +107,17 @@
 				E70667041EF5814600855D2E /* DZRequestManager.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		E70667081EF5D1E700855D2E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E70667091EF5D22600855D2E /* DZProfileTableViewCell.h */,
+				E706670A1EF5D22600855D2E /* DZProfileTableViewCell.m */,
+				E706670C1EF5D23A00855D2E /* DZPlaylistTableViewCell.h */,
+				E706670D1EF5D23A00855D2E /* DZPlaylistTableViewCell.m */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,10 +193,12 @@
 			files = (
 				E70666FF1EF57AC000855D2E /* DZUser.m in Sources */,
 				E70667051EF5814600855D2E /* DZRequestManager.m in Sources */,
+				E706670B1EF5D22600855D2E /* DZProfileTableViewCell.m in Sources */,
 				E70667021EF57E6D00855D2E /* DZPlaylist.m in Sources */,
 				E70666ED1EF5285000855D2E /* ViewController.m in Sources */,
 				E70666EA1EF5285000855D2E /* AppDelegate.m in Sources */,
 				E70666E71EF5285000855D2E /* main.m in Sources */,
+				E706670E1EF5D23A00855D2E /* DZPlaylistTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

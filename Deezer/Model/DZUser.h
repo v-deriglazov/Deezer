@@ -23,6 +23,7 @@ extern NSString *const kUserDidRefreshNotification;
 
 + (instancetype)user;
 
+@property (nonatomic, strong) NSError *refreshError;
 - (BOOL)isRefreshing;
 - (void)refreshData;
 

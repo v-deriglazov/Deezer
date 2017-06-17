@@ -62,6 +62,7 @@ typedef enum : NSUInteger {
     {
         if (_refreshStage == DZUserRefreshStageNone)
         {
+            self.refreshError = nil;
             [[NSNotificationCenter defaultCenter] postNotificationName:kUserWillRefreshNotification object:self];
         }
         _refreshStage = refreshStage;
@@ -94,6 +95,11 @@ typedef enum : NSUInteger {
         {
             result = [weakSelf parseProfileData:data];
         }
+        else
+        {
+            weakSelf.refreshError = [NSError errorWithDomain:NSURLErrorDomain code:500 userInfo:nil];
+        }
+        
         dispatch_async(dispatch_get_main_queue(), ^{
             weakSelf.refreshStage |= DZUserRefreshStageProfile;
         });
@@ -102,7 +108,14 @@ typedef enum : NSUInteger {
     [DZRequestManager refreshPlaylistsForUserWithID:self.userID completion:^(BOOL result, NSArray<NSDictionary *> *data)
     {
         if (result)
+        {
             [weakSelf parsePlaylistData:data];
+        }
+        else
+        {
+            weakSelf.refreshError = [NSError errorWithDomain:NSURLErrorDomain code:501 userInfo:nil];
+        }
+        
         dispatch_async(dispatch_get_main_queue(), ^{
             weakSelf.refreshStage |= DZUserRefreshStagePlaylists;
         });
@@ -114,7 +127,10 @@ typedef enum : NSUInteger {
 - (BOOL)parseProfileData:(NSDictionary *)data
 {
     if ([data[kUserIDKey] longLongValue] != self.userID)
+    {
+        self.refreshError = [NSError errorWithDomain:NSURLErrorDomain code:502 userInfo:nil];
         return NO;
+    }
     
     self.name = data[kNameKey];
     self.photo = data[kPictureKey];

@@ -15,7 +15,7 @@
 @property (nonatomic) NSUInteger duration;
 @property (nonatomic) NSUInteger rating;
 @property (nonatomic, strong) NSString *picture;
-@property (nonatomic, strong) NSDate *creationTime;
+@property (nonatomic, strong) NSString *creationTime;
 
 + (NSSet<DZPlaylist *> *)parseData:(NSArray<NSDictionary *> *)data;
 

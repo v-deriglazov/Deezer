@@ -24,6 +24,7 @@ NSTimeInterval const kRefreshTime = 120;
     if (_user == nil)
     {
         _user = [DZUser user];
+        [_user refreshData];
     }
     return _user;
 }

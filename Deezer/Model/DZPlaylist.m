@@ -13,7 +13,7 @@ static NSString *const kTitleKey = @"title";
 static NSString *const kDurationKey = @"duration";
 static NSString *const kRatingKey = @"rating";
 static NSString *const kPictureKey = @"picture";
-static NSString *const kTimeKey = @"time_add";
+static NSString *const kTimeKey = @"creation_date";
 
 
 @implementation DZPlaylist
@@ -38,7 +38,7 @@ static NSString *const kTimeKey = @"time_add";
         list.duration = [obj[kDurationKey] unsignedIntegerValue];
         list.rating = [obj[kRatingKey] unsignedIntegerValue];
         list.picture = obj[kPictureKey];
-        list.creationTime = [NSDate dateWithTimeIntervalSince1970:[obj[kTimeKey] unsignedIntegerValue]];
+        list.creationTime = obj[kTimeKey];
         [result addObject:list];
     }];
     
@@ -49,7 +49,7 @@ static NSString *const kTimeKey = @"time_add";
 
 - (NSString *)debugDescription
 {
-    return [NSString stringWithFormat:@"id %llu, title %@ time %@", self.listID, self.title, self.creationTime];
+    return [NSString stringWithFormat:@"id %llu, title %@\nduration %lu rating %lu\n time %@", self.listID, self.title, self.duration, self.rating, self.creationTime];
 }
 
 @end
