@@ -29,6 +29,7 @@ typedef enum : NSUInteger {
 
 @interface DZUser ()
 @property (nonatomic, strong) NSSet<DZPlaylist *> *playlists;
+@property (nonatomic, strong) NSSet<DZPlaylist *> *fetchedPlaylists;
 @property (nonatomic) DZUserRefreshStage refreshStage;
 @end
 
@@ -68,6 +69,8 @@ typedef enum : NSUInteger {
         _refreshStage = refreshStage;
         if (_refreshStage == DZUserRefreshStageNone)
         {
+            self.playlists = self.fetchedPlaylists;
+            self.fetchedPlaylists = nil;
             [[NSNotificationCenter defaultCenter] postNotificationName:kUserDidRefreshNotification object:self];
         }
     }
@@ -141,7 +144,7 @@ typedef enum : NSUInteger {
 - (void)parsePlaylistData:(NSArray<NSDictionary *> *)data
 {
     NSSet<DZPlaylist *> *list = [DZPlaylist parseData:data];
-    self.playlists = list;
+    self.fetchedPlaylists = list;
 }
 
 #pragma mark -
